@@ -47,8 +47,7 @@ public:
 	 //Returns the date for when the account opened, does not need a set function, since it will not change once initialized
 	std::string getDateOpened() const;
 
-	 //get and set function not needed for branch number as that will not change ever, and it would be the same
-	 //for every account for that bank.
+	void getVectorSub() const;
 
 private:
 	const int accountNumber;

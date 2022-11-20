@@ -20,19 +20,21 @@
 		if (status == "OPEN" || status == "CLOSED" || status == "FROZEN") {
 			if (accountStatus == "OPEN" && status == "CLOSED" || status == "FROZEN") {
 				accountStatus = status;
+				std::cout << "\nAccount status has been set!" << std::endl;
 				return true;
 			}
 			else if (accountStatus == "FROZEN" && status == "OPEN" || status == "CLOSED") {
 				accountStatus = status;
+				std::cout << "\nAccount status has been set!" << std::endl;
 				return true;
 			}
 			else if (accountStatus == "CLOSED") {
-				std::cout << "Account is already closed. Cannot change account status!" << std::endl;
+				std::cout << "\nAccount is already closed. Cannot change account status!" << std::endl;
 				return false;
 			}
 		}
 		else {
-			std::cout << "Invalid input, account status options are only open, frozen or closed!" << std::endl;
+			std::cout << "\nInvalid input, account status options are only open, frozen or closed!" << std::endl;
 			return false;
 		}
 		return false;
@@ -50,6 +52,7 @@
 				accountBalance = tempbalance;
 				return false;
 			}
+			std::cout << "Money has been deposited;" << std::endl;
 			return true;
 		}
 		else {
@@ -70,6 +73,7 @@
 				accountBalance = tempbalance;
 				return false;
 			}
+			std::cout << "Money has been withdrawed;" << std::endl;
 			return true;
 		}
 		else {
@@ -117,4 +121,12 @@
 	//Returns the date for when the account opened, does not need a set function, since it will not change once initialized
 	std::string CustomerAccount::getDateOpened() const {
 		return dateOpen;
+	}
+
+	void CustomerAccount::getVectorSub() const {
+		int size = vectorSub.size();
+		std::cout << "\nSelect which subaccount you want to manage." << std::endl;
+		for (int i = 1; i <= size; i++) {
+			std::cout << i << ") " << "Subaccount " << i << std::endl;
+		}
 	}

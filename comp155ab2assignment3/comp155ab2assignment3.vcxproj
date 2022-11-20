@@ -128,12 +128,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BankCustomer.h" />
+    <ClInclude Include="BankInterfaceAccountM.h" />
+    <ClInclude Include="BankInterfaceAccountS.h" />
+    <ClInclude Include="BankInterfaceAccountStatus.h" />
+    <ClInclude Include="BankInterfaceGetInfo.h" />
+    <ClInclude Include="BankInterfaceSetInfo.h" />
     <ClInclude Include="CustomerAccount.h" />
     <ClInclude Include="BankInterfaceNewAccount.h" />
+    <ClInclude Include="BankInterfaceSubAccount.h" />
     <ClInclude Include="Subaccount.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankCustomer.cpp" />
+    <ClCompile Include="BankInterfaceAccountM.cpp" />
+    <ClCompile Include="BankInterfaceAccountS.cpp" />
+    <ClCompile Include="BankInterfaceAccountStatus.cpp" />
+    <ClCompile Include="BankInterfaceGetInfo.cpp" />
+    <ClCompile Include="BankInterfaceSetInfo.cpp" />
+    <ClCompile Include="BankInterfaceSubAccount.cpp" />
     <ClCompile Include="CustomerAccount.cpp" />
     <ClCompile Include="BankInterfaceNewAccount.cpp" />
     <ClCompile Include="Main.cpp" />

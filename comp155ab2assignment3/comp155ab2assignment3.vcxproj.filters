@@ -27,6 +27,24 @@
     <ClInclude Include="BankInterfaceNewAccount.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BankInterfaceAccountM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BankInterfaceSetInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BankInterfaceGetInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BankInterfaceAccountS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BankInterfaceSubAccount.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BankInterfaceAccountStatus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankCustomer.cpp">
@@ -42,6 +60,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankInterfaceAccountM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankInterfaceSetInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankInterfaceGetInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankInterfaceAccountS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankInterfaceSubAccount.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BankInterfaceAccountStatus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

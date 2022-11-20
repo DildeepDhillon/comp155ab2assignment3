@@ -24,6 +24,7 @@ Subaccount::~Subaccount() {}
 				return false;
 			}
 			transaction++;
+			std::cout << "\nMoney has been deposited!" << std::endl;
 			return true;
 		}
 		else {
@@ -45,6 +46,7 @@ Subaccount::~Subaccount() {}
 				return false;
 			}
 			transaction++;
+			std::cout << "\nMoney has been withdrawed!" << std::endl;
 			return true;
 		}
 		else {
