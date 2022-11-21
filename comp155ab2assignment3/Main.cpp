@@ -129,7 +129,12 @@ void login() {
 		cout << "\nPlease enter your pin to login into the Bank Machine." << endl;
 		cin >> code;
 
-		if (bankinterfacenewaccountPTR->setLogin(code) == false) {
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+			cout << "Bad entry, Pin needs to be a combination of numbers. Try again!" << endl;
+			login();
+		}else if (bankinterfacenewaccountPTR->setLogin(code) == false) {
 			login();
 		}
 		
