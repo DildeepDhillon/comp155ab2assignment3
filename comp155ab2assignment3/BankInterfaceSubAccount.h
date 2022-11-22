@@ -36,6 +36,8 @@ public:
 
 	int subAccountWithdraw();
 
+	int getSubAccount();
+
 private:
 	int getInfoOption;
 	int getsubaccount;

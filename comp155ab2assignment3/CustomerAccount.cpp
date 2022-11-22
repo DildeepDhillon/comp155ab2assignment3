@@ -124,9 +124,12 @@
 	}
 
 	void CustomerAccount::getVectorSub() const {
-		int size = vectorSub.size();
-		std::cout << "\nSelect which subaccount you want to manage." << std::endl;
+		size_t size = vectorSub.size();
+		int j = 0;
+		std::cout << "\nList of subaccounts on file." << std::endl;
 		for (int i = 1; i <= size; i++) {
-			std::cout << i << ") " << "Subaccount " << i << std::endl;
+			std::cout << "Subaccount " << i << std::endl;
+			std::cout << "Balance on subaccount is: " << vectorSub[(j)]->getBalance() << "\n" << std::endl;
+			j++;
 		}
 	}

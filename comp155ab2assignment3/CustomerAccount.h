@@ -51,7 +51,7 @@ public:
 
 private:
 	const int accountNumber;
-	int accountBalance;
+	int accountBalance{ 0 };
 	std::string accountStatus;
 	std::string dateOpen;
 	const std::string branchNumber;

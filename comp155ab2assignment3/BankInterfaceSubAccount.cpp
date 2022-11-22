@@ -33,16 +33,14 @@ int BankInterfaceSubAccount::addSubAccount() {
 };
 
 int BankInterfaceSubAccount::removeSubAccount() {
-	subaccount--;
-	std::string s = "Subaccount " + std::to_string(subaccount);
 	std::cout << "\n";
-	std::cout << s << "!" << std::endl;
+	subaccount = subaccount-1;
 	return subaccount;
 };
 
 void BankInterfaceSubAccount::subAccountList() {
 	
-	for (int list = 1; list == subaccount; list++) {
+	for (int list = 1; list <= subaccount; list++) {
 		std::cout << list << ") Subaccount " << list << std::endl;
 	}
 };
@@ -88,4 +86,8 @@ int  BankInterfaceSubAccount::subAccountWithdraw() {
 	std::cin >> withdraw;
 
 	return withdraw;
+};
+
+int  BankInterfaceSubAccount::getSubAccount() {
+	return subaccount;
 };

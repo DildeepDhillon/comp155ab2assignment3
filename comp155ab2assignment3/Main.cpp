@@ -91,7 +91,7 @@ int main() {
 	cout << "\nThanks for setting up your account!" << endl;
 	int anumber = rand() % 20000 + 10000;
 	cout << anumber << " is your account number!\n" << endl;
-	int pin = rand() % 9999 + 1000;
+	int pin = rand() % 8999 + 1000;
 	cout << pin << " is your pin number use it to login into the bank machine." << endl;
 
 	//CustomerAccount class initialized
@@ -158,7 +158,6 @@ void mainSwitch(BankInterfaceNewAccount account,BankInterfaceAccountM bankInterf
 		subAccountSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
 	case 4:
 		break;
-
 	default:
 		mainSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
 		break;
@@ -194,6 +193,7 @@ void accountSetInfoSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM
 			bankcustomerPTR->setName(fname);
 		} while (bankcustomerPTR->setName(fname) == false);
 		accountSetInfoSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 	case 2:
 		//do while loop allows user to set new full address for account, and makes sure that address line#1 is provided
 		do {
@@ -217,6 +217,7 @@ void accountSetInfoSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM
 		getline(cin, postal);
 		bankcustomerPTR->setProvince(postal);
 		accountSetInfoSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 
 	case 3:
 		//do while loop allows user to change phone numbers on file, and makes sure atleast one phone number is provided
@@ -231,8 +232,9 @@ void accountSetInfoSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM
 			getline(cin, cphone);
 
 			bankcustomerPTR->setPhone(wphone, hphone, cphone);
-		} while (bankcustomerPTR->setPhone(wphone, hphone, cphone));
+		} while (bankcustomerPTR->setPhone(wphone, hphone, cphone) == false);
 		accountSetInfoSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 	case 4:
 		accountMSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
 		break;
@@ -254,8 +256,8 @@ void accountGetInfoSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM
 	switch (bankinterfacenewaccountPTR->getSwitch()) {
 	case 1:
 		cout << "\nAccount number is: " << customerAccountPTR.getAccountNumber();
-		cout << "\n Date account was opened: " << customerAccountPTR.getDateOpened();
-		cout << "Account Status: " << customerAccountPTR.getAccountStatus();
+		cout << "\nDate account was opened: " << customerAccountPTR.getDateOpened();
+		cout << "\nAccount Status: " << customerAccountPTR.getAccountStatus();
 		cout << "\n";
 		bankInterfaceGetInfo.printName();
 		cout << bankcustomerPTR->getName() << endl;
@@ -276,6 +278,7 @@ void accountGetInfoSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM
 
 
 		accountGetInfoSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 
 	case 4:
 		accountMSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
@@ -334,16 +337,19 @@ void accountSSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM bankI
 		bankInterfaceAccountS.setBalance();
 		cout << customeraccountPTR->getBalance() << endl;
 		accountSSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 
 	case 2:
 		cout << "\n";
 		cout << customeraccountPTR->setDeposit(bankInterfaceAccountS.setDeposit()) << endl;
 		accountSSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 
 	case 3:
 		cout << "\n";
 		cout << customeraccountPTR->setWithdrawal(bankInterfaceAccountS.setWidthdraw()) << endl;
 		accountSSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 
 	case 4:
 		mainSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
@@ -366,21 +372,23 @@ void subAccountSwitch(BankInterfaceNewAccount account, BankInterfaceAccountM ban
 
 	//Variables initialized for controlling the vector
 	int i{ 0 };
-	int j{ 0 };
 
 	//Subaccount class intialized 
 	Subaccount s;
 
 	switch (bankinterfacenewaccountPTR->getSwitch()) {
 	case 1:
-		i = bankInterfaceSubaccount.addSubAccount();
+		i = bankInterfaceSubaccount.getSubAccount();
+		bankInterfaceSubaccount.addSubAccount();
 		vectorSubMain.push_back(&s);
-		j = i - 1;
-		customerAccountPTR.AddSubAccount(vectorSubMain[(j)]);
+		customerAccountPTR.AddSubAccount(vectorSubMain[(i)]);
 		subAccountSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
 		break;
 	case 2:
-		customerAccountPTR.RemoveSubAccount();
+		if (customerAccountPTR.RemoveSubAccount() == true) {
+			bankInterfaceSubaccount.removeSubAccount();
+			vectorSubMain.pop_back();
+		}
 		subAccountSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
 		break;
 	case 3:
@@ -457,14 +465,17 @@ void accountStatus(BankInterfaceNewAccount account, BankInterfaceAccountM bankIn
 		account_Status = "OPEN";
 		customerAccountPTR.setStatus(account_Status);
 		accountStatus(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 	case 2:
 		account_Status = "CLOSED";
 		customerAccountPTR.setStatus(account_Status);
 		accountStatus(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 	case 3:
 		account_Status = "FROZEN";
 		customerAccountPTR.setStatus(account_Status);
 		accountStatus(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
+		break;
 	case 4:
 		accountMSwitch(account, bankInterfaceAccountM, bankInterfaceSetInfo, bankInterfaceGetInfo, bankInterfaceAccountS, bankInterfaceSubaccount, customerAccountPTR, bankInterfaceAccountStatus);
 		break;
